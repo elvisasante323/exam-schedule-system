@@ -1,0 +1,1182 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(ellipse 80% 50% at 100% -10%, rgba(14, 116, 144, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 0% 0%, rgba(11, 31, 58, 0.08), transparent),
+    var(--surface);
+  color: var(--text);
+}
+
+/* -- Header / Nav -- */
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-2) 100%);
+  color: var(--white);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.Brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.BrandMark {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.45rem;
+  background: var(--teal);
+  display: grid;
+  place-items: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.BrandText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.BrandText h1 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+}
+
+.BrandText span {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+}
+
+.HeaderMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.LiveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.LiveBadge::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+}
+
+.Avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.Navigation {
+  display: flex;
+  align-items: center;
+}
+
+.MainLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.25rem;
+  border-radius: 0.65rem;
+}
+
+.Link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 0.5rem;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.Link:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.LinkActive {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* -- Page shells -- */
+.Home,
+.ExamList,
+.CandidateList,
+.GoogleMap {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 1.5rem auto 2rem;
+  flex: 1;
+}
+
+.PageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.PageEyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.PageHeader h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.ViewSwitch {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  box-shadow: var(--shadow);
+}
+
+.ViewSwitch a,
+.ViewSwitch span {
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.ViewSwitch .is-active {
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* -- Stats -- */
+.StatGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.StatCard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 0.95rem 1rem;
+  text-align: left;
+  box-shadow: var(--shadow);
+  animation: fadeRise 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.StatCard:nth-child(2) { animation-delay: 50ms; }
+.StatCard:nth-child(3) { animation-delay: 100ms; }
+.StatCard:nth-child(4) { animation-delay: 150ms; }
+
+.StatCard--filter {
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.StatCard--filter:hover {
+  border-color: var(--teal);
+  transform: translateY(-1px);
+}
+
+.StatCard--filter:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.StatCard--filter.is-active {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal), var(--shadow);
+}
+
+.StatCard p {
+  margin: 0;
+}
+
+.StatLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.StatValue {
+  margin-top: 0.35rem !important;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.StatHint {
+  margin-top: 0.2rem !important;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.StatusDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.StatusDot--pending { background: var(--pending); }
+.StatusDot--started { background: var(--started); }
+.StatusDot--finished { background: var(--finished); }
+
+/* -- Toolbar -- */
+.Toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.SortControl {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: auto;
+}
+
+.SortControl label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.SortControl select {
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.SortControl select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.15);
+}
+
+.FilterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.FilterButton,
+.Button {
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.FilterButton:hover:not(:disabled),
+.Button:hover:not(:disabled) {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.FilterButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.Button--primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+.Button.Button--primary:hover:not(:disabled) {
+  background: var(--navy-2);
+  border-color: var(--navy-2);
+  color: var(--white);
+}
+
+.Button--teal {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--white);
+}
+
+.Button.Button--teal:hover:not(:disabled) {
+  background: var(--teal);
+  border-color: var(--teal);
+  filter: brightness(1.05);
+  color: var(--white);
+}
+
+.Button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* -- Session list -- */
+#SessionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.SessionGroup {
+  text-align: left;
+  animation: fadeRise 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.SessionGroupHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.55rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.SessionGroupHeader strong {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.ExamCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--finished);
+  border-radius: 0.9rem;
+  padding: 1rem 1.05rem;
+  text-align: left;
+  box-shadow: var(--shadow);
+  transition:
+    border-color 160ms ease,
+    border-left-color 280ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  animation: cardEnter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.SessionGroup .ExamCard:nth-child(2),
+#SessionList > .ExamCard:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.SessionGroup .ExamCard:nth-child(3),
+#SessionList > .ExamCard:nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.SessionGroup .ExamCard:nth-child(4),
+#SessionList > .ExamCard:nth-child(3) {
+  animation-delay: 120ms;
+}
+
+.SessionGroup .ExamCard:nth-child(5),
+#SessionList > .ExamCard:nth-child(4) {
+  animation-delay: 160ms;
+}
+
+.SessionGroup .ExamCard:nth-child(6),
+#SessionList > .ExamCard:nth-child(5) {
+  animation-delay: 200ms;
+}
+
+.ExamCard--pending { border-left-color: var(--pending); }
+.ExamCard--started { border-left-color: var(--started); }
+.ExamCard--finished { border-left-color: var(--finished); }
+
+.ExamCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08), 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.ExamTimeBlock {
+  min-width: 0;
+}
+
+.ExamCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ExamTime {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ExamTime span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.ExamMeta--mobile {
+  display: block;
+}
+
+.StatusPill--mobile {
+  display: inline-flex;
+}
+
+.ExamActions {
+  display: none;
+}
+
+.StatusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background-color 280ms ease,
+    color 280ms ease,
+    box-shadow 280ms ease;
+  animation: statusPop 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.StatusPill--pending {
+  background: rgba(217, 119, 6, 0.12);
+  color: #b45309;
+}
+
+.StatusPill--started {
+  background: rgba(8, 145, 178, 0.12);
+  color: #0e7490;
+}
+
+.StatusPill--finished {
+  background: rgba(100, 116, 139, 0.14);
+  color: #475569;
+}
+
+.ExamTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.ExamMeta {
+  margin: 0.35rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.ExamMetaRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.CandidateAvatar {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.ExamActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.AdvanceButton {
+  width: 100%;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.ExamStatusAction .AdvanceButton {
+  width: auto;
+}
+
+.CompletedLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--finished);
+}
+
+.ListFooter {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: left;
+}
+
+.EmptyState,
+.ErrorState,
+.LoadingState {
+  background: var(--white);
+  border: 1px dashed var(--border);
+  border-radius: 0.9rem;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+.ErrorState {
+  border-style: solid;
+  border-color: rgba(185, 28, 28, 0.25);
+  background: #fef2f2;
+  color: var(--error);
+}
+
+.SkeletonCard {
+  height: 7.5rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(90deg, #eef2f7 25%, #f8fafc 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+  border: 1px solid var(--border);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes statusPop {
+  from {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* -- Home -- */
+.HomeCard {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: var(--shadow);
+  text-align: left;
+  animation: fadeRise 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.HomeCard h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+
+.HomeCard p {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  max-width: 36rem;
+  line-height: 1.55;
+}
+
+.HomeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.HomeActions a {
+  text-decoration: none;
+}
+
+/* -- Map -- */
+.GoogleMap {
+  text-align: left;
+}
+
+.GoogleMap h2 {
+  margin: 0 0 1rem;
+}
+
+.MapCanvas {
+  width: 100%;
+  height: min(60vh, 480px);
+  min-height: 280px;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--white);
+  animation: fadeRise 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.MapFallback {
+  max-width: 36rem;
+}
+
+.MapFallback p {
+  margin: 0 0 0.75rem;
+  line-height: 1.55;
+}
+
+.MapFallback p:last-child {
+  margin-bottom: 0;
+}
+
+.MapFallback code {
+  font-size: 0.9em;
+  word-break: break-word;
+}
+
+.MapInfoWindow {
+  color: #0b1f3a;
+  max-width: 14rem;
+}
+
+.MapInfoWindow strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.MapInfoWindow p {
+  margin: 0.15rem 0 0;
+  color: #475569;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.MapInfoStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.MapLegend {
+  list-style: none;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+}
+
+.MapLegend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* -- Candidates -- */
+#CandidateList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.CandidateCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  padding: 1rem 1.05rem;
+  text-align: left;
+  box-shadow: var(--shadow);
+  transition:
+    border-color 160ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  animation: cardEnter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.CandidateCard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08), 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.CandidateIdentity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.CandidateAvatar--lg {
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 0.8rem;
+  background: rgba(14, 116, 144, 0.12);
+  color: var(--teal);
+}
+
+.CandidateExamSummary {
+  min-width: 0;
+}
+
+.CandidateNextLabel {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.CandidateNextTitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.CandidateLocations {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.CandidateStatusStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+/* -- Modal -- */
+.FilterModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 31, 58, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.FilterModal.is-open {
+  opacity: 1;
+}
+
+.ModalContent {
+  width: min(420px, 100%);
+  max-height: min(90vh, 640px);
+  overflow: auto;
+  background: var(--white);
+  border-radius: 1rem;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+  opacity: 0;
+}
+
+.FilterModal.is-open .ModalContent {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.ModalHeader,
+.ModalFooter {
+  padding: 1rem 1.15rem;
+}
+
+.ModalHeader {
+  border-bottom: 1px solid var(--border);
+}
+
+.ModalTitle {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.ModalBody {
+  padding: 1rem 1.15rem;
+}
+
+.FilterField {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.FilterField label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.FilterField input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  outline: none;
+  background: #f8fafc;
+}
+
+.FilterField input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(14, 116, 144, 0.15);
+}
+
+.ButtonField {
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.ModalFooter {
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* -- Footer -- */
+.Footer {
+  padding: 1rem 1.25rem 1.5rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.Footer p {
+  margin: 0;
+}
+
+.Footer span {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+@media screen and (min-width: 769px) {
+  .Header {
+    padding: 0.85rem 1.75rem;
+  }
+
+  .StatGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .ExamCard {
+    grid-template-columns: 7.5rem minmax(0, 1.5fr) minmax(0, 0.9fr) auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .CandidateCard {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr) minmax(0, 0.9fr) auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ExamDetails {
+    min-width: 0;
+  }
+
+  .ExamMeta--mobile,
+  .StatusPill--mobile,
+  .ExamActions {
+    display: none;
+  }
+
+  .ExamCandidate,
+  .ExamLocation,
+  .ExamStatusAction {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-width: 0;
+  }
+
+  .ExamLocation {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .ExamStatusAction {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.45rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Header {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .BrandText h1 {
+    font-size: 0.9rem;
+  }
+
+  .Navigation {
+    order: 3;
+    width: 100%;
+  }
+
+  .MainLinks {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .Link {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem 0.55rem;
+    font-size: 0.78rem;
+  }
+
+  .HeaderMeta .LiveBadge {
+    display: none;
+  }
+
+  .Home,
+  .ExamList,
+  .CandidateList,
+  .GoogleMap {
+    width: min(1120px, calc(100% - 1.25rem));
+    margin: 1rem auto 1.5rem;
+  }
+
+  .PageHeader {
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .PageHeader h2 {
+    font-size: 1.35rem;
+  }
+
+  .ViewSwitch {
+    width: 100%;
+  }
+
+  .ViewSwitch a,
+  .ViewSwitch span {
+    flex: 1;
+    text-align: center;
+  }
+
+  .Toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .SortControl {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .SortControl select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .FilterContainer {
+    width: 100%;
+  }
+
+  .FilterContainer .FilterButton {
+    flex: 1;
+  }
+
+  .StatGrid {
+    gap: 0.55rem;
+  }
+
+  .StatCard {
+    padding: 0.8rem 0.85rem;
+  }
+
+  .StatValue {
+    font-size: 1.4rem;
+  }
+
+  .ExamCard {
+    padding: 0.9rem;
+    gap: 0.7rem;
+  }
+
+  .ExamTitle {
+    font-size: 0.98rem;
+  }
+
+  .ExamCandidate,
+  .ExamLocation,
+  .ExamStatusAction {
+    display: none;
+  }
+
+  .ExamActions {
+    display: block;
+  }
+
+  .AdvanceButton {
+    width: 100%;
+  }
+
+  .FilterModal {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .ModalContent {
+    width: 100%;
+    max-height: min(88vh, 640px);
+    border-radius: 1rem 1rem 0 0;
+    transform: translateY(100%);
+  }
+
+  .FilterModal.is-open .ModalContent {
+    transform: translateY(0);
+  }
+
+  .MapCanvas {
+    height: min(70vh, 420px);
+    min-height: 240px;
+    border-radius: 0.85rem;
+  }
+
+  .HomeActions {
+    flex-direction: column;
+  }
+
+  .HomeActions a,
+  .HomeActions .Button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .StatHint {
+    font-size: 0.7rem;
+  }
+
+  .SessionGroupHeader {
+    flex-wrap: wrap;
+  }
+
+  .MapCanvas {
+    height: 55vh;
+    min-height: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
